@@ -665,7 +665,7 @@ struct opp *exynos4x12_monitor(struct busfreq_data *data)
 		cpufreq = opp_get_freq(data->max_opp);
 		if (cpu_load < MAX_CPU_THRESHOLD) {
 			opp = data->curr_opp;
-			if (cpu_load_slope > CPU_SLOPE_SIZE) {
+			if (cpu_load_slope < CPU_SLOPE_SIZE) {
 				cpufreq--;
 				opp = opp_find_freq_floor(data->dev, &cpufreq);
 			}
